@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 export default function Home() {
   const [products, setProducts] = useState(null);
+  const [addedProductId, setAddedProductId] = useState(null);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -19,6 +20,21 @@ export default function Home() {
 
     fetchProducts();
   }, []);
+  const localuradShenaxuliMonacemebiCartistvis = (product) => {
+    const arsebuliProducti = JSON.parse(localStorage.getItem("cartItems")) || [];
+    const damatebuliProducti = arsebuliProducti.findIndex((item) => item.id === product.id);
+
+    if (damatebuliProducti !== -1) {
+      arsebuliProducti[damatebuliProducti].quantity += 1;
+    } else {
+      arsebuliProducti.push({ ...product, quantity: 1 });
+    }
+    localStorage.setItem("cartItems", JSON.stringify(arsebuliProducti));
+    setAddedProductId(product.id);
+    setTimeout(() => {
+      setAddedProductId(null);
+    }, 3000);
+  };
   if (!products) {
     return (
       <main className={styles.page}>
@@ -47,8 +63,13 @@ export default function Home() {
                 <p className={styles.productPrice}>${product.price.toFixed(2)}</p>
               </div>
             </Link>
-            <button className={styles.addToCartButton} type="button" aria-label={`Add ${product.title} to cart`}>
-              <span>Add to cart</span>
+            <button
+              className={styles.addToCartButton}
+              type="button"
+              onClick={() => localuradShenaxuliMonacemebiCartistvis(product)}
+              aria-label={`Add ${product.title} to cart`}
+            >
+              <span>{addedProductId === product.id ? "daemata dzma egaa! ✓" : "Add to cart"}</span>
             </button>
           </article>
         ))}

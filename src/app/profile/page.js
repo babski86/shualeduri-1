@@ -4,10 +4,7 @@ export default async function ProfilePage() {
   let user;
 
   try {
-    const response = await fetch("https://fakestoreapi.com/users/3", {
-      cache: "no-store",
-    });
-
+    const response = await fetch("https://fakestoreapi.com/users/3");
     if (!response.ok) {
       throw new Error(`Could not load profile (${response.status}).`);
     }
@@ -36,7 +33,8 @@ export default async function ProfilePage() {
       <section className={styles.profileCard} aria-label="Profile details">
         <div className={styles.identity}>
           <div className={styles.avatar} aria-hidden="true">
-            {user.name.firstname[0]}{user.name.lastname[0]}
+            {user.name.firstname[0]}
+            {user.name.lastname[0]}
           </div>
           <div>
             <h2 className={styles.name}>
@@ -52,11 +50,15 @@ export default async function ProfilePage() {
             <dl>
               <div className={styles.detailRow}>
                 <dt>Email</dt>
-                <dd><a href={`mailto:${user.email}`}>{user.email}</a></dd>
+                <dd>
+                  <a href={`mailto:${user.email}`}>{user.email}</a>
+                </dd>
               </div>
               <div className={styles.detailRow}>
                 <dt>Phone</dt>
-                <dd><a href={`tel:${user.phone}`}>{user.phone}</a></dd>
+                <dd>
+                  <a href={`tel:${user.phone}`}>{user.phone}</a>
+                </dd>
               </div>
               <div className={styles.detailRow}>
                 <dt>User ID</dt>
@@ -70,7 +72,9 @@ export default async function ProfilePage() {
             <dl>
               <div className={styles.detailRow}>
                 <dt>Street</dt>
-                <dd>{user.address.number} {user.address.street}</dd>
+                <dd>
+                  {user.address.number} {user.address.street}
+                </dd>
               </div>
               <div className={styles.detailRow}>
                 <dt>City</dt>
@@ -82,7 +86,9 @@ export default async function ProfilePage() {
               </div>
               <div className={styles.detailRow}>
                 <dt>Coordinates</dt>
-                <dd>{user.address.geolocation.lat}, {user.address.geolocation.long}</dd>
+                <dd>
+                  {user.address.geolocation.lat}, {user.address.geolocation.long}
+                </dd>
               </div>
               <div className={styles.detailRow}>
                 <dt>Record version</dt>
