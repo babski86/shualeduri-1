@@ -1,4 +1,4 @@
-:global(nav) {
+:global(nav:not([class])) {
   --nav-logo-left: max(24px, calc((100% - 1200px) / 2));
 
   position: relative;
@@ -36,7 +36,7 @@
   letter-spacing: normal;
 }
 
-:global(nav ul) {
+:global(nav:not([class]) ul) {
   display: flex;
   width: min(100% - 48px, 1200px);
   min-height: 72px;
@@ -48,7 +48,7 @@
   list-style: none;
 }
 
-:global(nav a) {
+:global(nav:not([class]) a) {
   display: inline-flex;
   min-height: 42px;
   align-items: center;
@@ -65,15 +65,15 @@
     color 160ms ease;
 }
 
-:global(nav a:hover),
-:global(nav a:focus-visible) {
+:global(nav:not([class]) a:hover),
+:global(nav:not([class]) a:focus-visible) {
   outline: none;
   background: #f2f2f2;
   color: #111;
 }
 
 @media (max-width: 600px) {
-  :global(nav) {
+  :global(nav:not([class])) {
     --nav-logo-left: 12px;
   }
 
@@ -87,7 +87,7 @@
     border-radius: 9px;
   }
 
-  :global(nav ul) {
+  :global(nav:not([class]) ul) {
     width: 100%;
     min-height: 64px;
     justify-content: flex-end;
@@ -95,7 +95,7 @@
     padding: 0 8px 0 102px;
   }
 
-  :global(nav a) {
+  :global(nav:not([class]) a) {
     min-height: 40px;
     padding: 0 10px;
     font-size: 0.82rem;
@@ -103,7 +103,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  :global(nav a) {
+  :global(nav:not([class]) a) {
     transition: none;
   }
 }
