@@ -16,10 +16,10 @@ const navbar = () => {
             <a href="/">products</a>
           </li>
           <li>
-            <a href="/about">profile </a>
+            <a href="/profile">profile </a>
           </li>
           <li>
-            <a href="/contact">cart</a>
+            <a href="/cart">cart</a>
           </li>
         </ul>
       </nav>
