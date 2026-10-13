@@ -24,7 +24,6 @@ export default function CartPage() {
     }
   };
 
-  // რაოდენობის შემცირება
   const gamokleba = (index) => {
     const updatedCart = [...cartItems];
     if (updatedCart[index].quantity > 1) {
