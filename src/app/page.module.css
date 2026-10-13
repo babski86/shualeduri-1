@@ -1,8 +1,12 @@
 .page {
-  width: min(100% - 48px, 1200px);
-  margin: 0 auto;
-  padding: 64px 0 88px;
-  color: #171717;
+  --text-main: #f4f7fb;
+  --text-muted: #a5b1c2;
+  --accent: #55e6c1;
+
+  width: 100%;
+  padding: 64px max(24px, calc((100% - 1200px) / 2)) 88px;
+  background: #090c12;
+  color: var(--text-main);
 }
 
 .header {
@@ -12,7 +16,7 @@
 
 .eyebrow {
   margin-bottom: 10px;
-  color: #717171;
+  color: var(--accent);
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -22,13 +26,27 @@
 .header h1 {
   font-size: clamp(2rem, 5vw, 3rem);
   letter-spacing: -0.05em;
+  color: #fff;
 }
 
 .subtitle {
   margin-top: 12px;
-  color: #686868;
+  color: #b8a9ff;
   font-size: 1rem;
   line-height: 1.6;
+}
+
+.loading {
+  display: grid;
+  min-height: 240px;
+  place-items: center;
+  border: 1px solid #273244;
+  border-radius: 16px;
+  background: #121824;
+  color: var(--accent);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
 .productGrid {
@@ -42,9 +60,9 @@
   min-width: 0;
   flex-direction: column;
   overflow: hidden;
-  border: 1px solid #e9e9e9;
+  border: 1px solid #273244;
   border-radius: 14px;
-  background: #fff;
+  background: #121824;
   transition:
     box-shadow 180ms ease,
     transform 180ms ease;
@@ -52,7 +70,8 @@
 
 .productCard:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 28px rgb(0 0 0 / 8%);
+  border-color: #55e6c1;
+  box-shadow: 0 12px 28px rgb(85 230 193 / 12%);
 }
 
 .imageContainer {
@@ -60,7 +79,7 @@
   height: 230px;
   place-items: center;
   padding: 24px;
-  background: #f8f8f7;
+  background: #1a2433;
 }
 
 .productImage {
@@ -85,6 +104,7 @@
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.5;
+  color: #f4f7fb;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
@@ -93,7 +113,7 @@
   display: -webkit-box;
   overflow: hidden;
   margin-top: 10px;
-  color: #707070;
+  color: var(--text-muted);
   font-size: 0.875rem;
   line-height: 1.55;
   -webkit-box-orient: vertical;
@@ -103,15 +123,14 @@
 .productPrice {
   margin-top: auto;
   padding-top: 18px;
-  color: #171717;
+  color: #f6c85f;
   font-size: 1.1rem;
   font-weight: 700;
 }
 
 @media (max-width: 600px) {
   .page {
-    width: min(100% - 32px, 1200px);
-    padding: 40px 0 56px;
+    padding: 40px 16px 56px;
   }
 
   .header {

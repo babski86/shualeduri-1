@@ -1,9 +1,10 @@
 "use client";
 import styles from "./page.module.css";
-
+import Link from "next/link";
+import link from "next/link";
 import { useState, useEffect } from "react";
 export default function Home() {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState(null);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -18,6 +19,14 @@ export default function Home() {
 
     fetchProducts();
   }, []);
+  if (!products) {
+    return (
+      <main className={styles.page}>
+        <p className={styles.loading}>Loading products...</p>
+      </main>
+    );
+  }
+
   return (
     <section className={styles.page}>
       <header className={styles.header}>
@@ -27,16 +36,18 @@ export default function Home() {
       </header>
       <div className={styles.productGrid}>
         {products.map((product) => (
-          <article className={styles.productCard} key={product.id}>
-            <div className={styles.imageContainer}>
-              <img className={styles.productImage} src={product.image} alt={product.title} />
-            </div>
-            <div className={styles.productDetails}>
-              <h2 className={styles.productTitle}>{product.title}</h2>
-              <p className={styles.productDescription}>{product.description}</p>
-              <p className={styles.productPrice}>${product.price.toFixed(2)}</p>
-            </div>
-          </article>
+          <Link key={product.id} href={`/products/details/${product.id}`} className={styles.productLink}>
+            <article className={styles.productCard} key={product.id}>
+              <div className={styles.imageContainer}>
+                <img className={styles.productImage} src={product.image} alt={product.title} />
+              </div>
+              <div className={styles.productDetails}>
+                <h2 className={styles.productTitle}>{product.title}</h2>
+                <p className={styles.productDescription}>{product.description}</p>
+                <p className={styles.productPrice}>${product.price.toFixed(2)}</p>
+              </div>
+            </article>
+          </Link>
         ))}
       </div>
     </section>

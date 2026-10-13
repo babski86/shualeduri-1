@@ -8,22 +8,22 @@
   background: #fff;
 }
 
-:global(nav::before) {
-  position: absolute;
-  top: 50%;
-  left: calc(var(--nav-logo-left) + 46px);
-  color: #171717;
-  content: "Shoply";
-  font-size: 1.2rem;
-  font-weight: 800;
-  letter-spacing: -0.05em;
-  transform: translateY(-50%);
-}
-
-:global(nav::after) {
+.logo {
   position: absolute;
   top: 50%;
   left: var(--nav-logo-left);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: #171717;
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  text-decoration: none;
+  transform: translateY(-50%);
+}
+
+.logoMark {
   display: grid;
   width: 34px;
   height: 34px;
@@ -31,10 +31,9 @@
   border-radius: 11px;
   background: linear-gradient(135deg, #171717, #515151);
   color: #fff;
-  content: "S";
   font-size: 1rem;
   font-weight: 800;
-  transform: translateY(-50%);
+  letter-spacing: normal;
 }
 
 :global(nav ul) {
@@ -78,11 +77,11 @@
     --nav-logo-left: 12px;
   }
 
-  :global(nav::before) {
+  .logo {
     font-size: 1.05rem;
   }
 
-  :global(nav::after) {
+  .logoMark {
     width: 30px;
     height: 30px;
     border-radius: 9px;
